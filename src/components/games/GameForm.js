@@ -17,6 +17,7 @@ export const GameForm = () => {
         numberOfPlayers: 0,
         title: "",
         maker: "",
+        description: "",
         gameTypeId: 0
     })
 
@@ -38,46 +39,105 @@ export const GameForm = () => {
 
         One hint: [event.target.name]
     */
-    const changeGameTitleState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.title = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameTitleState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.title = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGameMakerState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.maker = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameMakerState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.maker = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGamePlayersState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.numberOfPlayers = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGamePlayersState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.numberOfPlayers = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGameSkillLevelState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.skillLevel = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameSkillLevelState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.skillLevel = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
 
-    const changeGameTypeState = (event) => {
-        const newGameState = { ...currentGame }
-        newGameState.gameTypeId = event.target.value
-        setCurrentGame(newGameState)
-    }
+    // const changeGameTypeState = (event) => {
+    //     const newGameState = { ...currentGame }
+    //     newGameState.gameTypeId = event.target.value
+    //     setCurrentGame(newGameState)
+    // }
+
+
+     //when a field changes, update state. 
+    const handleControlledInputChange = (event) => {
+        event.preventDefault()
+        console.log(event.target.value)
+        /* When changing a state object or array,
+        always create a copy, make changes, and then set state.*/
+        const newGame = { ...currentGame }
+        let selectedValue = event.target.value
+      
+        newGame[event.target.id] = selectedValue
+        // update state
+        setCurrentGame(newGame)
+      }
+
     /* REFACTOR CHALLENGE END */
-
     return (
         <form className="gameForm">
             <h2 className="gameForm__title">Register New Game</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="title">Title: </label>
-                    <input type="text" name="title" required autoFocus className="form-control"
+                    <input type="text" name="title" id="title" required autoFocus className="form-control"
                         value={currentGame.title}
-                        onChange={changeGameTitleState}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <select className="form-group" id="gameTypeId" onChange={handleControlledInputChange}>
+                    <option value="0" htmlFor="gameType">Please select a game type</option>
+                    {
+                        gameTypes.map(gametype => <option key={gametype.id} value={gametype.id}>{gametype.label}</option>)
+                    }
+                </select>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="description">Description: </label>
+                    <input type="description" name="description" id="description"required autoFocus className="form-control"
+                        value={currentGame.description}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="maker">Maker: </label>
+                    <input type="text" name="maker" id="maker" required autoFocus className="form-control"
+                        value={currentGame.maker}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="numberOfPlayers">Number Of Players: </label>
+                    <input type="text" name="numberOfPlayers" id="numberOfPlayers" required autoFocus className="form-control"
+                        value={currentGame.numberOfPlayers}
+                        onChange={handleControlledInputChange}
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="skillLevel">Skill Level: </label>
+                    <input type="text" name="skillLevel" id="skillLevel" required autoFocus className="form-control"
+                        value={currentGame.skillLevel}
+                        onChange={handleControlledInputChange}
                     />
                 </div>
             </fieldset>
