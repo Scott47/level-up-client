@@ -10,7 +10,7 @@ export const ApplicationViews = () => {
     return <>
         <main style={{
             margin: "5rem 2rem",
-            backgroundColor: "lightgoldenrodyellow"
+            backgroundColor: "lightblue"
         }}>
             <Route exact path='/'>Welcome to Level Up</Route>
             <GameProvider>

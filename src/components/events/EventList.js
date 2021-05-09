@@ -6,7 +6,7 @@ export const EventList = (props) => {
 
     useEffect(() => {
         getEvents()
-    }, [])
+    }, [getEvents])
 
     return (
         <article className="events">
