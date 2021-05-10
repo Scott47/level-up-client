@@ -1,12 +1,14 @@
 import React, { useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { EventContext } from "./EventProvider.js"
 
-export const EventList = (props) => {
+export const EventList = () => {
     const { events, getEvents } = useContext(EventContext)
+    const history = useHistory ()
 
     useEffect(() => {
         getEvents()
-    }, [getEvents])
+    }, [])
 
     return (
         <article className="events">
@@ -33,6 +35,11 @@ export const EventList = (props) => {
                     </section>
                 })
             }
+            <button className="btn btn-2 btn-sep icon-create"
+                onClick={() => {
+                    history.push({ pathname: "/events/new" })
+                }}
+            >Create New Event</button>
         </article >
     )
 }

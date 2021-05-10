@@ -27,7 +27,7 @@ export const GameForm = () => {
     */
     useEffect(() => {
         getGameTypes()
-    }, [getGameTypes])
+    }, [])
 
      //when a field changes, update state. 
     const handleControlledInputChange = (event) => {

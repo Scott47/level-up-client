@@ -9,7 +9,7 @@ export const GameList = (props) => {
 
     useEffect(() => {
         getGames()
-    }, [getGames])
+    }, [])
 
     return (
         <article className="games">
