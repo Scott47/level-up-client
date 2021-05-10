@@ -23,14 +23,14 @@ export const ApplicationViews = () => {
                 </Route>
             </GameProvider>
             <GameProvider>
-            <EventProvider>
-                <Route exact path="/events">
-                    <EventList />
-                </Route>
-                <Route exact path="/events/new">
-                    <EventForm />
-                </Route>
-            </EventProvider>
+                <EventProvider>
+                    <Route exact path="/events">
+                        <EventList />
+                    </Route>
+                    <Route exact path="/events/new">
+                        <EventForm />
+                    </Route>
+                </EventProvider>
             </GameProvider>
         </main>
     </>
