@@ -5,12 +5,13 @@ import { EventList } from "./events/EventList"
 import { GameProvider } from "./games/GameProvider"
 import { EventProvider } from "./events/EventProvider"
 import { GameForm } from "./games/GameForm"
+import { EventForm } from "./events/EventForm"
 
 export const ApplicationViews = () => {
     return <>
         <main style={{
             margin: "5rem 2rem",
-            backgroundColor: "lightgoldenrodyellow"
+            backgroundColor: "lightblue"
         }}>
             <Route exact path='/'>Welcome to Level Up</Route>
             <GameProvider>
@@ -21,11 +22,16 @@ export const ApplicationViews = () => {
                     <GameForm />
                 </Route>
             </GameProvider>
+            <GameProvider>
             <EventProvider>
                 <Route exact path="/events">
                     <EventList />
                 </Route>
+                <Route exact path="/events/new">
+                    <EventForm />
+                </Route>
             </EventProvider>
+            </GameProvider>
         </main>
     </>
 }

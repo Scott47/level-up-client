@@ -29,53 +29,11 @@ export const GameForm = () => {
         getGameTypes()
     }, [])
 
-    /*
-        REFACTOR CHALLENGE START
-
-        Can you refactor this code so that all property
-        state changes can be handled with a single function
-        instead of five functions that all, largely, do
-        the same thing?
-
-        One hint: [event.target.name]
-    */
-    // const changeGameTitleState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.title = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameMakerState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.maker = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGamePlayersState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.numberOfPlayers = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameSkillLevelState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.skillLevel = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-    // const changeGameTypeState = (event) => {
-    //     const newGameState = { ...currentGame }
-    //     newGameState.gameTypeId = event.target.value
-    //     setCurrentGame(newGameState)
-    // }
-
-
      //when a field changes, update state. 
     const handleControlledInputChange = (event) => {
         event.preventDefault()
         console.log(event.target.value)
-        /* When changing a state object or array,
-        always create a copy, make changes, and then set state.*/
+       
         const newGame = { ...currentGame }
         let selectedValue = event.target.value
       
@@ -141,14 +99,10 @@ export const GameForm = () => {
                     />
                 </div>
             </fieldset>
-
-            {/* You create the rest of the input fields for each game property */}
-
             <button type="submit"
                 onClick={evt => {
                     // Prevent form from being submitted
                     evt.preventDefault()
-
                     const game = {
                         maker: currentGame.maker,
                         title: currentGame.title,
@@ -156,8 +110,7 @@ export const GameForm = () => {
                         skillLevel: parseInt(currentGame.skillLevel),
                         gameTypeId: parseInt(currentGame.gameTypeId)
                     }
-
-                    // Send POST request to your API
+                    // Send POST request to levelup API
                     createGame(game)
                         .then(() => history.push("/games"))
                 }}

@@ -20,6 +20,9 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "rules": {
+    "react-hooks/exhaustive-deps": 0
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -31,5 +34,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^9.0.1"
   }
 }
