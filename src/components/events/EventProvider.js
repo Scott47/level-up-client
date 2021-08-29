@@ -37,6 +37,7 @@ export const EventProvider = (props) => {
             }
         })
             .then(response => response.json())
+            .then(getEvents)
     }
     const leaveEvent = eventId => {
         return fetch(`http://localhost:8000/events/${eventId}/signup`, {
